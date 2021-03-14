@@ -1,0 +1,13 @@
+.header{
+  background: linear-gradient(to top, #3b5f21 40%, #69a93c);
+}
+.top-title {
+  min-height: 4vh !important;
+}
+.site-title{
+  width: 77%;
+}
+/*.menu{*/
+/*  width: 71%;*/
+/*  background: none;*/
+/*}*/
