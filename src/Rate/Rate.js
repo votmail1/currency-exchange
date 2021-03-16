@@ -33,7 +33,6 @@ class Rate extends React.Component {
     }
 
     render() {
-        console.log((this.state.currencyRate));
         return (
             <div className="content w-75 m-auto bg-white pb-2 pt-4 h-75">
                 <div className="row w-100 text-start p-2">
