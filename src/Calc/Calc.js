@@ -5,7 +5,8 @@ class Calc extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            result: 0
+            resultBuy: 0,
+            resultSale: 0
         }
     }
 
@@ -18,7 +19,8 @@ class Calc extends React.Component {
         let elem = e.target.elements
         let countCurrency = elem["count-currency"].value
         let typeCurrency = elem["type-currency"].value
-        this.setState({result: (countCurrency / this.state.rate[typeCurrency]).toFixed(2)})
+        this.setState({resultBuy: (countCurrency * this.state.rate[typeCurrency].buy).toFixed(2)})
+        this.setState({resultSale: (countCurrency * this.state.rate[typeCurrency].sale).toFixed(2)})
     }
 
     render() {
@@ -43,8 +45,9 @@ class Calc extends React.Component {
                         </div>
                         <div className="text-start p-4">
                             <h4>Result</h4>
-                            <ul className="calc-res">
-                                <li>EUR {this.state.result}</li>
+                            <ul className="calc-res list-group ">
+                                <li className="list-unstyled ">Buy : <span className="fw-bold" >{this.state.resultBuy}</span> UAN </li>
+                                <li className="list-unstyled"> Sale : <span className="fw-bold" >{this.state.resultSale}</span> UAN</li>
                             </ul>
                         </div>
                     </div>

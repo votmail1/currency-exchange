@@ -10,43 +10,50 @@ class Rate extends React.Component {
             "date": "",
             "currencyRate": {}
         }
-        this.currency = ["USD", "RUB", "CAD", "PHP"]
+        this.currency = ["USD", "EUR", "RUR", "BTC"]
         this.getRate();
     }
 
     getRate = () => {
-        fetch('https://api.exchangeratesapi.io/latest')
+        fetch('https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=5')
             .then(data => {
+
                 return data.json()
             })
             .then(data => {
-                this.setState({date: data.date})
                 let result = {}
-                for (let i = 0; i < this.currency.length; i++) {
-                    result[this.currency[i]] = data.rates[this.currency[i]]
-                }
+                data.map((elem, i) => {
+                    if (elem.ccy === this.currency[i]) {
+                        result.[elem.ccy] = {"buy": elem.buy, "sale": elem.sale}
+                    }
+                    return result
+                })
                 this.setState({currencyRate: result})
             })
     }
 
     render() {
+        console.log((this.state.currencyRate));
         return (
             <div className="content w-75 m-auto bg-white pb-2 pt-4 h-75">
                 <div className="row w-100 text-start p-2">
-                    <h5> Сurrency exchange on {this.state.date} </h5>
+                    <h5> PRIVATBANK Сurrency Exchange {this.state.date} </h5>
                 </div>
                 <div className="row w-100 m-auto h-25">
-                    {Object.keys(this.state.currencyRate).map((key) =>
-                        (
-                            <div className="currency col border border-dark h-100 m-4 mt-1" key={key}>
-                                <div className="h-50 text-center fs-5 fw-bold pt-3">{key}</div>
-                                <div className="h-25 text-end">
-                                    {this.state.currencyRate[key].toFixed(2)}
+                    {(this.state.currencyRate.EUR) ?
+                        Object.keys(this.state.currencyRate).map((key) =>
+                            (
+                                <div className="currency col border border-dark h-100 m-4 mt-1" key={key}>
+                                    <div className="h-50 text-center fs-5 fw-bold pt-1">{key}</div>
+                                    <div className="h-25 text-end fs-5">
+                                        Buy : <span className="fw-bold"> {Number(this.state.currencyRate[key].buy).toFixed(2)} </span> UAN
+                                    </div>
+                                    <div className="h-25 text-end fs-5">
+                                        Sale : <span className="fw-bold"> {Number(this.state.currencyRate[key].buy).toFixed(2)} </span> UAN
+                                    </div>
                                 </div>
-                                <div className="h-25 text-end"> for 1 EUR</div>
-                            </div>
-                        )
-                    )}
+                            )
+                        ) : ''}
                 </div>
                 <Calc rate={this.state.currencyRate}/>
             </div>
