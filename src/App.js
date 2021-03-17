@@ -10,7 +10,7 @@ class App extends React.Component {
     render() {
         return (
             <div className="App">
-                <div className="container-sm vh-100 min-vw-100 m-0">
+                <div className="container-sm min-vw-100 m-0">
                     <Header/>
                     <Rate/>
                     <Footer/>

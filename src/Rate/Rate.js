@@ -34,11 +34,11 @@ class Rate extends React.Component {
 
     render() {
         return (
-            <div className="content w-75 m-auto bg-white pb-2 pt-4 h-75">
+            <div className="content w-75 m-auto bg-white pb-2 pt-4">
                 <div className="row w-100 text-start p-2">
                     <h5> PRIVATBANK Сurrency Exchange {this.state.date} </h5>
                 </div>
-                <div className="row w-100 m-auto h-25">
+                <div className="d-flex flex-column flex-xxl-row w-100 m-auto ">
                     {(this.state.currencyRate.EUR) ?
                         Object.keys(this.state.currencyRate).map((key) =>
                             (
