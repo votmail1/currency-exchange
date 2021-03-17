@@ -48,7 +48,7 @@ class Rate extends React.Component {
                                         Buy : <span className="fw-bold"> {Number(this.state.currencyRate[key].buy).toFixed(2)} </span> UAN
                                     </div>
                                     <div className="h-25 text-end fs-5">
-                                        Sale : <span className="fw-bold"> {Number(this.state.currencyRate[key].buy).toFixed(2)} </span> UAN
+                                        Sale : <span className="fw-bold"> {Number(this.state.currencyRate[key].sale).toFixed(2)} </span> UAN
                                     </div>
                                 </div>
                             )
