@@ -24,7 +24,7 @@ class Rate extends React.Component {
                 let result = {}
                 data.map((elem, i) => {
                     if (elem.ccy === this.currency[i]) {
-                        result.[elem.ccy] = {"buy": elem.buy, "sale": elem.sale}
+                        result[elem.ccy] = {"buy": elem.buy, "sale": elem.sale}
                     }
                     return result
                 })
@@ -34,7 +34,7 @@ class Rate extends React.Component {
 
     render() {
         return (
-            <div className="content w-75 m-auto bg-white pb-2 pt-4">
+            <div className="content col-xxl-9  m-auto bg-white pb-2 pt-4">
                 <div className="row w-100 text-start p-2">
                     <h5> PRIVATBANK Сurrency Exchange {this.state.date} </h5>
                 </div>
